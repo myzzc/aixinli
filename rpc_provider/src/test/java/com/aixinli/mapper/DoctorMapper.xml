@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aixinli.mapper.DoctorMapper">
+    <resultMap id="doctor" type="com.aixinli.pojo.Doctor">
+        <id column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+        <result column="name" property="name"/>
+        <result column="phoneNumber" property="phoneNumber"/>
+        <result column="sex" property="sex"/>
+    </resultMap>
+    <!-- 插入新用户信息 -->
+    <insert id="addUser" parameterType="com.aixinli.pojo.Doctor">
+		insert into doctor values
+		(default, #{doctor.username},#{doctor.password},#{doctor.name},#{doctor.phoneNumber}
+		,#{doctor.sex};
+	</insert>
+    <!-- 修改用户信息，暂时不用 -->
+    <update id="updateUser" parameterType="com.aixinli.pojo.Doctor">
+		update doctor values
+		(default, #{doctor.username},#{doctor.password},#{doctor.name},#{doctor.phoneNumber}
+		,#{doctor.sex};
+	</update>
+    <!-- 查询用户信息 -->
+    <select id="selUser" parameterType="com.aixinli.pojo.Doctor">
+		select * from doctor where username=#{doctor.username} and password=#{doctor.password}
+	</select>
+</mapper>
